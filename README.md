@@ -59,4 +59,23 @@ ls , cd , cat , file , du , find"
 - We then use the cat command to extract the password.
 - The command is cat ...Hiding-From-You
 - The password is 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+# Level 5
+- "The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command."
+- "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 #
+- After we are logged in we us ls to see that inhere directory is there.
+- Then we cd directories using the cd command.
+- After we are in the inhere directory we use the ls -la command.
+- When we do this we are able to see all files in long format. We could also use just the ls command but the ls -la command might give us more clues.
+- Once we do that we still are unable to easily decipher which file is human-readable.
+- If we wanted to we could use the cat command to search them one by one but that is not a very good way considering there are 10 files.
+- In order to list each file type in the current directory we need to do something new.
+- We can use the file command to determine file types.
+- But how do we print the file types for every file in the directory?
+- We do this by using a wildcard to list all of the file types instead of just one.
+- The command is *
+- Again we have the file names starting with - so to get around this we use the same solution as before.
+- The command is file ./*
+- Once we run this command we see that -file07 is ACII text and is different than the others.
+- To obtain the password we run the command cat ./-file07
+- The password is 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
