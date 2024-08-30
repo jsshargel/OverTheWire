@@ -28,4 +28,3 @@ ls , cd , cat , file , du , find"
 - After we are logged in we need to find the password.
 - If we use the ls command again we can see a file named -
 - When we try to the cat command on this file it does not work correctly.
-- 
