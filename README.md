@@ -48,3 +48,15 @@ ls , cd , cat , file , du , find"
 - "The password for the next level is stored in a hidden file in the inhere directory."
 - "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 #
+- After we are logged in we use the ls command to see the contents agian.
+- We see that there is a directory named "inhere"
+- We are going to use a new command to change directories. The command is cd.
+- We use the command "cd inhere" and we are able to change directories.
+- Once we are in the inhere directory we search the contents using the ls command.
+- When we do this we do we do not see anything.
+- This is because the file is hidden. In order to see the file we can use the command ls -a which will list all files including hidden ones.
+- The when we do that we can see a file named ...Hiding-From-You
+- We then use the cat command to extract the password.
+- The command is cat ...Hiding-From-You
+- The password is 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
+#
