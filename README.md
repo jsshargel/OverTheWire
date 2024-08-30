@@ -20,3 +20,11 @@ ls , cd , cat , file , du , find"
 - The cat command will read the file and print the output in standard format to the console.
 - once we enter the command "cat readme" we are presented with the password - ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 # Level 2
+- "The password for the next level is stored in a file called - located in the home directory"
+- "Commands you may need to solve this level
+ls , cd , cat , file , du , find"
+- To log into the next level we need to use ssh again.
+- After we are logged in we need to find the password.
+- If we use the ls command again we can see a file named -
+- When we try to the cat command on this file it does not work correctly.
+- 
