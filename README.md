@@ -21,10 +21,30 @@ ls , cd , cat , file , du , find"
 - once we enter the command "cat readme" we are presented with the password - ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 # Level 2
 - "The password for the next level is stored in a file called - located in the home directory"
-- "Commands you may need to solve this level
-ls , cd , cat , file , du , find"
+- "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 # 
 - To log into the next level we need to use ssh again.
 - After we are logged in we need to find the password.
 - If we use the ls command again we can see a file named -
 - When we try to the cat command on this file it does not work correctly.
+- Since using - will not work correctly we can specifiy the path in order to concatenate.
+- The command is cat ./-
+- The password is 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
+# Level 3 
+- "The password for the next level is stored in a file called spaces in this filename located in the home directory"
+- "Commands you may need to solve this level - ls , cd , cat , file , du , find"
+# 
+- After we long in we use the ls command to list what is in the folder.
+- We see that there is a file named "spaces in this filename"
+- If we try to use the command cat spaces in this filename we get some errors.
+- The cat command works on multiple files when seperated with a space.
+- When we entered "cat spaces in this filename" the command tried to concatenate each word as a different file.
+- Since this is one file and not multiple this does not work.
+- We need a way to specifiy that this is one file.
+- We can specifiy this is a single file by putting quotes around the filename.
+- The command is - cat "spaces in this filename"
+- The password we get is MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
+# Level 4 
+- "The password for the next level is stored in a hidden file in the inhere directory."
+- "Commands you may need to solve this level - ls , cd , cat , file , du , find"
+#
