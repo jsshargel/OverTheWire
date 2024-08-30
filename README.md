@@ -23,6 +23,7 @@ ls , cd , cat , file , du , find"
 - "The password for the next level is stored in a file called - located in the home directory"
 - "Commands you may need to solve this level
 ls , cd , cat , file , du , find"
+# 
 - To log into the next level we need to use ssh again.
 - After we are logged in we need to find the password.
 - If we use the ls command again we can see a file named -
