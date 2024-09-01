@@ -83,3 +83,55 @@ ls , cd , cat , file , du , find"
 - "The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties: human-readable, 1033 bytes in size, and not executable."
 - "Commands you may need to solve this level -ls , cd , cat , file , du , find"
 #
+- First things first we will cd into the inhere directory.
+- Once inside the directory we us the ls -la command to look at all of the files in long format including the hidden ones.
+- We can see that there are quite a few folders in here.
+- Let's see if there are files inside of one of these folders.
+- We can use the same command but point it at a folder.
+- We use ls -la maybehere00 and see that there are a lot of files in just this one folder alone.
+- We can assume that it would take too long to go through ever single folder.
+- We need to figure out a quicker way to find what we're looking for.
+- In order to do this we can utilize the find command.
+- The find command can search in various ways. It can find file types, directories, search by file size etc.
+- We can do this a couple of ways but lets just cut straight to the chase and try to search for the specific properties we need.
+- To do that we can run this command. find -type f -size 1033c -readable ! -executable
+- -type f tells it to only look for files
+- -size 1033c tells it to only look for files that are 1033 bytes in size
+- -readable tells it to only include files that are readable
+- ! -executable excludes files that are executable because the ! negates the executable option. Therefore it returns only files that are not executable.
+- We can also just search for and files that are exactly 1033 bytes in size by using the command find -size 1033c.
+- Both of these return us the same thing which is ./maybehere07/.file2
+- We use the cat command to give us the password which is HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
