@@ -102,6 +102,11 @@ ls , cd , cat , file , du , find"
 - We can also just search for and files that are exactly 1033 bytes in size by using the command find -size 1033c.
 - Both of these return us the same thing which is ./maybehere07/.file2
 - We use the cat command to give us the password which is HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
+# Level 7
+- "The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, and 33 bytes in size."
+"Commands you may need to solve this level - ls , cd , cat , file , du , find , grep"
+#
+- 
 
 
 
