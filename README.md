@@ -9,7 +9,7 @@
 - Once there we need to log in using the command below.
 - ssh -p 2220 bandit0@bandit.labs.overthewire.org
 - After we are logged in we can enter the password provided and continue to the next level.
-# Level 1
+# Level 0-1
 - "The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game."
 - "Commands you may need to solve this level
 ls , cd , cat , file , du , find"
@@ -19,7 +19,7 @@ ls , cd , cat , file , du , find"
 - To read the content in this file we can use the cat command which is short for concatenate.
 - The cat command will read the file and print the output in standard format to the console.
 - once we enter the command "cat readme" we are presented with the password - ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
-# Level 2
+# Level 1-2
 - "The password for the next level is stored in a file called - located in the home directory"
 - "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 # 
@@ -30,7 +30,7 @@ ls , cd , cat , file , du , find"
 - Since using - will not work correctly we can specifiy the path in order to concatenate.
 - The command is cat ./-
 - The password is 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
-# Level 3 
+# Level 2-3 
 - "The password for the next level is stored in a file called spaces in this filename located in the home directory"
 - "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 # 
@@ -44,7 +44,7 @@ ls , cd , cat , file , du , find"
 - We can specifiy this is a single file by putting quotes around the filename.
 - The command is - cat "spaces in this filename"
 - The password we get is MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
-# Level 4 
+# Level 3-4 
 - "The password for the next level is stored in a hidden file in the inhere directory."
 - "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 #
@@ -59,7 +59,7 @@ ls , cd , cat , file , du , find"
 - We then use the cat command to extract the password.
 - The command is cat ...Hiding-From-You
 - The password is 2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
-# Level 5
+# Level 4-5
 - "The password for the next level is stored in the only human-readable file in the inhere directory. Tip: if your terminal is messed up, try the “reset” command."
 - "Commands you may need to solve this level - ls , cd , cat , file , du , find"
 #
@@ -79,7 +79,7 @@ ls , cd , cat , file , du , find"
 - Once we run this command we see that -file07 is ACII text and is different than the others.
 - To obtain the password we run the command cat ./-file07
 - The password is 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
-# Level 6
+# Level 5-6
 - "The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties: human-readable, 1033 bytes in size, and not executable."
 - "Commands you may need to solve this level -ls , cd , cat , file , du , find"
 #
@@ -102,13 +102,27 @@ ls , cd , cat , file , du , find"
 - We can also just search for and files that are exactly 1033 bytes in size by using the command find -size 1033c.
 - Both of these return us the same thing which is ./maybehere07/.file2
 - We use the cat command to give us the password which is HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
-# Level 7
+# Level 6-7
 - "The password for the next level is stored somewhere on the server and has all of the following properties: owned by user bandit7, owned by group bandit6, and 33 bytes in size."
 "Commands you may need to solve this level - ls , cd , cat , file , du , find , grep"
 #
+- After we log in lets use the ls command to see whats going on.
+- There are no files in here and if we use the ls -la command we do not find anything usefule.
+- Let's use the find command again to see what we can come up with.
+- We will use find / to search the root directory.
+- Let's try find / -type f -user bandit7 -group bandit6 -size 33c
+- When we do this we get a lot of results with a lot of denied permissions.
+- However, when we look through them we can see our file since it is the only one without permissions denied.
+- If there had been a lot more permissions denied this might take some time to comb through so let's figure out a way to return just what we are looking for.
+- We can use 2>/dev/null to hide all of the error messages and this should give us our file.
+- The final command is find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
+- This returns us /var/lib/dpkg/info/bandit7.password
+- We use the cat command to get our password: morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
+# Level 7-8
+- "The password for the next level is stored in the file data.txt next to the word millionth"
+- "Commands you may need to solve this level - man, grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+#
 - 
-
-
 
 
 
