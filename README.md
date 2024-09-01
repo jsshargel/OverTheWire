@@ -79,3 +79,7 @@ ls , cd , cat , file , du , find"
 - Once we run this command we see that -file07 is ACII text and is different than the others.
 - To obtain the password we run the command cat ./-file07
 - The password is 4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
+# Level 6
+- "The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties: human-readable, 1033 bytes in size, and not executable."
+- "Commands you may need to solve this level -ls , cd , cat , file , du , find"
+#
