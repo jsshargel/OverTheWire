@@ -122,8 +122,17 @@ ls , cd , cat , file , du , find"
 - "The password for the next level is stored in the file data.txt next to the word millionth"
 - "Commands you may need to solve this level - man, grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
 #
-- 
-
+- After we are logged in we use the ls command and see the data.txt file.
+- We can use the du command to check disk usage to see how big the data.tx file is.
+- The command du -b data.txt will return us the exact amount of bytes the file is.
+- When we enter the command we can see that the file is 4184396.
+- We know from this that it would not be efficient to concatenate the whole file.
+- We need another way to search for what we are looking for inside of the file.
+- To do this we can use the grep command to search for the specific string we were given.
+- We also need to use the pipe tool. This will connect the output of one command to the input of another. In this case it will be cat and grep.
+- When we enter "cat data.txt | grep millionth" we are telling the command line to print the contents of the data.txt file via cat and send it to grep which searches the content to find the word millionth.  
+After we enter the command we are able to see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
+# 8-9
 
 
 
