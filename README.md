@@ -132,9 +132,32 @@ ls , cd , cat , file , du , find"
 - We also need to use the pipe tool. This will connect the output of one command to the input of another. In this case it will be cat and grep.
 - When we enter "cat data.txt | grep millionth" we are telling the command line to print the contents of the data.txt file via cat and send it to grep which searches the content to find the word millionth.  
 After we enter the command we are able to see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
-# 8-9
-
-
+# Level 8-9
+- "The password for the next level is stored in the file data.txt and is the only line of text that occurs only once."
+- "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+#
+- Ok, let's check out what is in the folder.
+- We see that there is a data.txt file in here.
+- Let's run see how big the file is using the same command as we did in the previous level.
+- We can see that the file is 37831 bytes.
+- Let's try something new and use the sort command.
+- The sort command is used to sort the lines of text in alphabetical order. 
+- When we run sort data.txt we can see that there are a ton of strings that are returned to us in alphabetical order.
+- If we wanted we could take the time to find the line that occurs only once but this would be tedious.
+- In order to find the line that only occurs once we can use the uniq command.
+- The uniq command works by filitering out consecutive duplicate lines. 
+- Therefore, this only works if we are able to first sort the lines.
+- Let's try using what we learned previously with piping and send the sort output to uniq input.
+- When we run "sort data.txt | uniq" we are are presented with a list of lines that are all different.
+- What this did was sort the lines in alphabetical order and then filtered out any duplicates.
+- We need to take this a step farther and find the one line that only occurs once.
+- To do this we need to use uniq -u.
+- What this will do is display the "unique" line that only appears once. 
+- When we run the command sort data.txt | uniq -u we find the password: 4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
+# Level 9-10
+- "The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters."
+- "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+#
 
 
 
