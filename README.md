@@ -158,8 +158,18 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - "The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters."
 - "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
 #
-
-
+- In this level, we will need to learn the strings command.
+- The strings command is used to find human-readable strings in files.
+- When we log into this level and concatenate the data.txt file we can see that there are a bunch of unreadable characters along with some letters and numbers.
+- If we just ran the strings command by itself on the data.txt file it shows us every sequence of human-readable characters.
+- We can find our answer by doing this but the challenge states that the string we are looking for is preceded by several "=" characters so let's incorporate that with the grep command.
+- To do that we send the output of the strings data.txt command to a grep command.
+- This is done with the syntax strings data.txt | grep ===
+- This returns us with a few different strings but we can see which one is the password we're looking for. FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
+# Level 10-11
+"The password for the next level is stored in the file data.txt, which contains base64 encoded data."
+"Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+#
 
 
 
