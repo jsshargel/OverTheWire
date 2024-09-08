@@ -167,10 +167,19 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - This is done with the syntax strings data.txt | grep ===
 - This returns us with a few different strings but we can see which one is the password we're looking for. FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 # Level 10-11
-"The password for the next level is stored in the file data.txt, which contains base64 encoded data."
-"Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+- "The password for the next level is stored in the file data.txt, which contains base64 encoded data."
+- "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
 #
-
+- Since the directions state that the data.txt file contains base64 encoded data I assume that we will use a base64 command.
+- First, let's start by taking a look at what is inside the data.txt file when we just run the cat command.
+- It looks like there is a string of encoded data so we need to figure out how to decode it.
+- If we just run the command base64 data.txt we are actually just encoding it and we get an even longer string than before.
+- We need to decode the file and its contents and to do that we can use base64 -d.
+- When we run the command base64 -d data.txt we get the decoded data which is, "The password is dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr."
+# Level 11-12
+- "The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions"
+- "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
+#
 
 
 
