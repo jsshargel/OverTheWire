@@ -180,6 +180,23 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - "The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions"
 - "Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd"
 #
+- For this level, we are going to learn a new command.
+- The instructions on the website list Rot13 as helpful reading material.
+- When we look we can see that "ROT13 is a simple letter substitution cipher that replaces a letter with the 13th letter after it in the Latin alphabet.
+- If we look inside the data file we can see that there is a string of characters that we need to decipher.
+- To do this we will use the tr command, which stands for translate.
+- We first need to concatenate the data.txt and send the output to the tr command via piping.
+- We also need to tell the tr command what to look for.
+- We first want to define the range of letters, so to include all upper and lower case letters we can use 'A-Za-z'
+- Next, we want to define how the characters in the first set will be deciphered. Remember ROT13 rotates by 13 places.
+- To do that the command is 'N-ZA-Mn-za-m'
+- We do not need to worry about numbers since Rot13 only affects alphabetic letters.
+- the final command is cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+- The password is 7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
+# Level 12-13
+- "The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)"
+- Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir, cp, mv, file"
+#
 
 
 
