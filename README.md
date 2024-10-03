@@ -232,6 +232,11 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - After running the xxd command we find out that we need to decompress using gzip again. mv data8.bin data8.gz followed by gzip -d data8.gz
 - When we search the directory this time we can see that the data8 file is fully decompressed! ls followed by cat data8
 - Password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
+# Level 13-14
+- "The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on"
+- "Commands you may need to solve this level - ssh, telnet, nc, openssl, s_client, nmap"
+#
+
 
 
 
