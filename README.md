@@ -197,14 +197,41 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - "The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work. Use mkdir with a hard to guess directory name. Or better, use the command “mktemp -d”. Then copy the datafile using cp, and rename it using mv (read the manpages!)"
 - Commands you may need to solve this level - grep, sort, uniq, strings, base64, tr, tar, gzip, bzip2, xxd, mkdir, cp, mv, file"
 #
-
-
-
-
-
-
-
-
+- The first thing we need to do when starting this level is to create a new directory so that we can copy the contents of the directory and then modify and create new files.
+- We cannot do this in the current location.
+- To do this we will use the mkdir command.
+- First, we will navigate the/tmp directory using cd /tmp
+- Next, we'll create the new directory using mktemp -d and then use cd to access the newly created directory.
+- Now we can us the cp command to copy the data.txt file into the directory. cp ~/data.txt .
+- We can now use the ls command to see that our data.txt file was copied into the directory.
+- Now we can to rename the data.txt file to hexdump using the mv command. mv data.txt hexdump
+- When we take a peak inside of the hexdump file we can see that is readable to us. cat hexdump | head
+- Since we can read it we know that it is in hexdump format and in order to work with the original data we need to convert it back to a binary file.
+- To do that we will use the xxd -r command which will revert it back. xxd -r hexdump compressed
+- Now we need to decompress the data but to do that we need to figure out which decompression to use.
+- Let's run the cat command on the hexdump file to try to find a clue.
+- When we do that we can see that the first line starts with 1f8b 08, which means we need to use gzip to decompress it.
+- In order to decompress it we need to first rename the file. mv compressed compressed.gz
+- Next, we need to decompress the file using the gzip command. gzip -d compressed.gz
+- After that, we can run xxd compressed and see that it still needs to be decompressed further.
+- From the first line we can see that 425a 68, which after searching reveals to be bzip version 2.
+- Knowing this we can follow the same steps as before. mv compressed compressed.bz2 and then follow it up with bzip2 -d compressed.bz2
+- After running the xxd command again we see that the file is still compressed using gzip again.
+- We follow the same steps to decompress further. mv compressed compressed.gz and then follow it up with gzip -d compressed.gz
+- Alright, now when we run the xxd command we see that we have something new to work with.
+- In the first line we can spot a data5.bin string.
+- In order to extract the file we'll use the tar command.
+- First, we need to rename the file and then we can use the tar command to extract the file. mv compressed compressed.tar followed by tar -xf compressed.tar
+- This time when we ls the files in the directory we can see the data5.bin file in there as well.
+- Now we can run the same xxd command on the data5.bin file and we see another file named data6.bin in the first line.
+- We'll follow the same process to extract that one. tar -xf data5.bin
+- Now we can see the new data6.bin file using the ls command.
+- Next, we'll use xxd to see what's going on with it and see we need to decompress using bzip2 agian. bzip2 -d data6.bin
+- We are returned with "bzip2: Can't guess original name for data6.bin -- using data6.bin.out" so now we use the tar command to extract further. tar -xf data6.bin.out
+- When we search the directory now we find a new file named data8.bin
+- After running the xxd command we find out that we need to decompress using gzip again. mv data8.bin data8.gz followed by gzip -d data8.gz
+- When we search the directory this time we can see that the data8 file is fully decompressed! ls followed by cat data8
+- Password is FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 
 
 
