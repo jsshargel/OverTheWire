@@ -236,10 +236,35 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - "The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on"
 - "Commands you may need to solve this level - ssh, telnet, nc, openssl, s_client, nmap"
 #
-
-
-
-
+- I started by listing the contents of the current working directory to see what files were available.
+- This revealed a file called sshkey.private, which is the SSH private key we'll use to log into the next level.
+- To make sure this file is a private key, I used the head command to view the beginning of the file. head sshkey.private
+- This displayed the private key, starting with: -----BEGIN RSA PRIVATE KEY-----
+- Now that we know this is the correct private key, we can proceed to use it for logging into bandit14.
+- I used the SSH command along with the -i flag to specify the private key file and logged in to bandit14. ssh -i sshkey.private -p 2220 bandit14@localhost
+- When prompted about the fingerprint confirmation, I typed "yes."
+- The -i flag tells SSH to use the private key stored in sshkey.private.
+- The -p 2220 specifies the port number (2220), as required by the server.
+- We're logging in as user bandit14 on the same machine (localhost) so we use bandit14@localhost
+- We can now see in the command prompt that we are logged in as bandit14@bandit.
+- We can also use whoami to verify.
+- Next, we need to retrieve the password for bandit14
+- The instructions tell us that the password is stored in /etc/bandit_pass/bandit14
+- Finally, I use the cat command to get the password. cat /etc/bandit_pass/bandit14
+- The password is MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+# Level 14-15
+- "The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost."
+- "Commands you may need to solve this level - ssh, telnet, nc, openssl, s_client, nmap"
+#
+- For this level, I will just continue as bandit14 from the previous level since I am already logged in.
+- Next, I needed to submit the password to port 30000 on localhost.
+- To do that I will use the command nc localhost 30000
+- nc (netcat) is a command-line tool used to send and receive data over a network. It’s great for creating client-server connections or listening on ports.
+- localhost refers to the current machine we are logged into. Its IP address is 127.0.0.1. This allows us to access network services running on the same machine.
+- After running the command nc localhost 30000 I used the password for the current level to obtain the password for the next level.
+- The password is 8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+# Level 15-16
+- 
 
 
 
