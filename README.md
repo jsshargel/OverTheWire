@@ -282,10 +282,17 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - "Helpful note: Getting “DONE”, “RENEGOTIATING” or “KEYUPDATE”? Read the “CONNECTED COMMANDS” section in the manpage."
 - "Commands you may need to solve this level - ssh, telnet, nc, ncat, socat, openssl, s_client, nmap, netstat, ss"
 #
-- 
-
-
-
+- We know that the service we need is running on one of the ports between 31000 and 32000, so I used the nmap command to scan for services within that range. nmap -sV -T4 -p 31000-32000 localhost
+- nmap is a command-line tool used for network scanning. It helps identify open ports, the services running on those ports, and sometimes the versions of those services.
+- -sV tells nmap to attempt service version detection. In this case, it will try to identify the type of service running on each open port and report its version. This is crucial to figure out which ports are running SSL or other protocols.
+- -T4: The -T option controls the speed of the scan. T4 is an aggressive timing option that makes the scan faster without sacrificing too much accuracy. This is useful for getting results quickly.
+- -p 31000-32000 specifies the range of ports to scan. We are focusing on ports between 31000 and 32000 because the task specifies that the service we need to find is within this range.
+- localhost refers to the current machine we are working on (the Bandit server), using its IP address 127.0.0.1. By scanning localhost, we’re checking for services running on the same machine, rather than on a remote server.
+- The scan results showed five open ports within the specified range. Among these, only two ports (31518 and 31790) were using SSL encryption, which is a key requirement for this task.
+- Port 31518: Runs an ssl/echo service. The echo service simply returns whatever data is sent to it, which makes it unlikely to be the correct service for this challenge.
+- Port 31790: Runs an SSL-encrypted service but is labeled as ssl/unknown, which indicates it is not easily identifiable by nmap. Additionally, this service returns the message “Enter correct password,” suggesting that this is the service we need to interact with.
+- Given this, port 31790 is the most promising candidate for submitting the current password.
+- Now that we know the service on port 31790 uses SSL encryption, I used openssl s_client to securely connect to the service and send the current level’s password:
 
 
 
