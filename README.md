@@ -292,8 +292,11 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - Port 31518: Runs an ssl/echo service. The echo service simply returns whatever data is sent to it, which makes it unlikely to be the correct service for this challenge.
 - Port 31790: Runs an SSL-encrypted service but is labeled as ssl/unknown, which indicates it is not easily identifiable by nmap. Additionally, this service returns the message “Enter correct password,” suggesting that this is the service we need to interact with.
 - Given this, port 31790 is the most promising candidate for submitting the current password.
-- Now that we know the service on port 31790 uses SSL encryption, I used openssl s_client to securely connect to the service and send the current level’s password:
-
+- Now that we know the service on port 31790 uses SSL encryption, I used openssl s_client to try to securely connect to the service. openssl s_client --connect localhost:31790
+- When I ran this command I kept getting the response KEYUPDATE so I used ncat to connect instead. ncat --ssl localhost 31790
+- After I entered the password for this level the server responded with a message indicating success, followed by an RSA private key
+- I needed to save this private key to a file so that I could use it for logging into the next level. Since I don't have permission to write files in the current directory, I created a temporary folder in /tmp               -  mkdir /tmp/random_sshkey
+- Next, I make my way to that directory. cd /tmp/random_sshkey
 
 
 
