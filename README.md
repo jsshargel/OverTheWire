@@ -297,12 +297,12 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - After I entered the password for this level the server responded with a message indicating success, followed by an RSA private key.
 - To use the RSA private key, I needed to save it to a file.
 - I did this by navigating the /tmp directory and using the command touch private16.key
-- I then ran the command cat private16.key and to my surprise the RSA private key was already copied in there. 
+- I then ran the command cat private16.key and to my surprise, the RSA private key was already copied in there. 
 - To be quite honest I am not sure how this happened and if this doesn't happen for you you can run vim private16.key and edit it that way.
 - Next, I tried logging in to bandit17 using that file. ssh -i private16.key bandit17@localhost
-- I ran into two errors. One what that I did not specify the port and two I needed to chance the file permissions.
-- I changed file permissions using chmod 700 private16.key and then ran ssh -i private16.key -p 2220 bandit17@localhost
-- I selected yes when asked to continue connected and then I was in!
+- I ran into two errors. One, I did not specify the port, and two I needed to change the file permissions.
+- I changed file permissions using chmod 700 private16.key, although I think chmod 400 is more secure and would work also, and then ran ssh -i private16.key -p 2220 bandit17@localhost
+- I selected yes when asked to continue connecting and then I was in!
 - Next, I captured the password for the current level by reading the password file: cat /etc/bandit_pass/bandit17
 - The password is EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
 
