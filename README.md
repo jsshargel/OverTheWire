@@ -305,8 +305,13 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - I selected yes when asked to continue connecting and then I was in!
 - Next, I captured the password for the current level by reading the password file: cat /etc/bandit_pass/bandit17
 - The password is EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
-
-
+#
+- "There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new"
+- "NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19"
+- "Commands you may need to solve this level - cat, grep, ls, diff"
+#
+- To solve this, we use the diff command, which compares two files and shows the differences between them. **diff passwords.old passwords.new**
+- 
 
 
 
