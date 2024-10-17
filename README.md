@@ -290,13 +290,21 @@ After we enter the command we can see the password: dfwvzFQi4mU0wfNbFOe9RoWskMLg
 - localhost refers to the current machine we are working on (the Bandit server), using its IP address 127.0.0.1. By scanning localhost, we’re checking for services running on the same machine, rather than on a remote server.
 - The scan results showed five open ports within the specified range. Among these, only two ports (31518 and 31790) were using SSL encryption, which is a key requirement for this task.
 - Port 31518: Runs an ssl/echo service. The echo service simply returns whatever data is sent to it, which makes it unlikely to be the correct service for this challenge.
-- Port 31790: Runs an SSL-encrypted service but is labeled as ssl/unknown, which indicates it is not easily identifiable by nmap. Additionally, this service returns the message “Enter correct password,” suggesting that this is the service we need to interact with.
+- Port 31790: Runs an SSL-encrypted service but is labeled as ssl/unknown, which indicates it is not easily identifiable by nmap. Also, this service returns the message “Enter correct password,” suggesting that this is the service we need to interact with.
 - Given this, port 31790 is the most promising candidate for submitting the current password.
 - Now that we know the service on port 31790 uses SSL encryption, I used openssl s_client to try to securely connect to the service. openssl s_client --connect localhost:31790
 - When I ran this command I kept getting the response KEYUPDATE so I used ncat to connect instead. ncat --ssl localhost 31790
-- After I entered the password for this level the server responded with a message indicating success, followed by an RSA private key
-- I needed to save this private key to a file so that I could use it for logging into the next level. Since I don't have permission to write files in the current directory, I created a temporary folder in /tmp               -  mkdir /tmp/random_sshkey
-- Next, I make my way to that directory. cd /tmp/random_sshkey
+- After I entered the password for this level the server responded with a message indicating success, followed by an RSA private key.
+- To use the RSA private key, I needed to save it to a file.
+- I did this by navigating the /tmp directory and using the command touch private16.key
+- I then ran the command cat private16.key and to my surprise the RSA private key was already copied in there. 
+- To be quite honest I am not sure how this happened and if this doesn't happen for you you can run vim private16.key and edit it that way.
+- Next, I tried logging in to bandit17 using that file. ssh -i private16.key bandit17@localhost
+- I ran into two errors. One what that I did not specify the port and two I needed to chance the file permissions.
+- I changed file permissions using chmod 700 private16.key and then ran ssh -i private16.key -p 2220 bandit17@localhost
+- I selected yes when asked to continue connected and then I was in!
+- Next, I captured the password for the current level by reading the password file: cat /etc/bandit_pass/bandit17
+- The password is EReVavePLFHtFlFsjn3hyzMlvSuSAcRD
 
 
 
